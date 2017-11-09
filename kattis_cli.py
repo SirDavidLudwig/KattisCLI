@@ -68,7 +68,7 @@ def get_config():
                      os.path.join(os.path.dirname(sys.argv[0]), '.kattisrc')]):
         raise ConfigError('''\
 I failed to read in a config file from your home directory or from the
-same directory as this script. To download a .kattisrc file please visit 
+same directory as this script. To download a .kattisrc file please visit
 https://<kattis>/download/kattisrc
 
 The file should look something like this:
@@ -178,7 +178,7 @@ def open_submission(submit_response, cfg):
             webbrowser.open(url)
 
 
-def main():
+def main(argv):
     parser = argparse.ArgumentParser(description='Submit a solution to Kattis')
     parser.add_argument('-p', '--problem',
                    help=''''Which problem to submit to.
@@ -196,7 +196,7 @@ Overrides default guess (based on suffix of first filename)''')
                    action='store_true')
     parser.add_argument('files', nargs='+')
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     files = args.files
 
     try:
@@ -294,4 +294,4 @@ extension "%s"''' % (ext,))
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
